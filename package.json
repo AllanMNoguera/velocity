@@ -1,0 +1,13 @@
+{
+	"name":"BusCo",
+	"description":"Control for Bus Tickets and Routes",
+	"keywords":["control", "bus"],
+	"author":"Allan Noguera",
+	"contributors":[],
+	"dependencies": {
+		"node-mysql":"0.4"	
+	},
+	"lib":".",
+	"main":"./index.js",
+	"version":"0.1.0"
+}
