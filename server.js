@@ -1,6 +1,7 @@
 var http = require('http');
 var url = require('url');
 var io = require('socket.io');
+var model = require('./model');
 
 
 function iniciar(route, handle) {
@@ -19,10 +20,10 @@ function iniciar(route, handle) {
 	var socket = io(server);
 	socket.on('connection', function(socket_listener){
 		console.log('User has connected');
-		socket_listener.on('request', function(socker_listener){
+		model.init();
+		socket_listener.on('request', function(){
 			console.log('User sent request');
-			socket_listener.emit('refresh','2H','21:00');
-			console.log('Response sent');
+			model.schedule(socket_listener);
 		});
 	});
 	server.listen(8080, '0.0.0.0');
