@@ -20,7 +20,6 @@ function iniciar(route, handle) {
 	var socket = io(server);
 	socket.on('connection', function(socket_listener){
 		console.log('User has connected');
-		model.init();
 		socket_listener.on('request', function(){
 			console.log('User sent request');
 			model.schedule(socket_listener);

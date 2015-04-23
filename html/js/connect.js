@@ -1,6 +1,13 @@
 var socket = io.connect('http://localhost:8080');
-socket.on('refresh', function(ruta,hora) {
-	$('#itinerario').append("<tr><td>"+ruta+"</td><td>"+hora+"</tr>");
+var htmlrow = '<tr class="info"><td>{:id:}</td><td>{:data:}</tr>';
+
+socket.on('refresh', function(rows) {
+	$('tr').remove('.info');
+	for (var row in rows) {
+		var newhtmlrow = htmlrow.replace('{:id:}',rows[row].id);
+		newhtmlrow = newhtmlrow.replace('{:data:}',rows[row].data);
+		$('#itinerario').append(newhtmlrow);
+	}
 });
 
 var main = function () {

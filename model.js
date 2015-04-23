@@ -8,16 +8,13 @@ var box = new DB({
 	connectionLimit: 50
 });
 
-var init = function() {
+var schedule = function (socket) {
 	box.connect(function(conn) {
-		console.log('Connected to MySQL');
+		conn.query('SELECT * FROM example;',function(err, rows, fields) {
+			console.log('Sending response');
+			socket.emit('refresh',rows);
+		});
 	});
 }
 
-var schedule = function (socket) {
-	console.log('Sending response');
-	socket.emit('refresh','2H','21:00');
-}
-
-exports.init = init;
 exports.schedule = schedule;
