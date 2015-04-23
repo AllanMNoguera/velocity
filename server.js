@@ -19,8 +19,10 @@ function iniciar(route, handle) {
 	var socket = io(server);
 	socket.on('connection', function(socket_listener){
 		console.log('User has connected');
-		socket_listener.on('request', function(){
+		socket_listener.on('request', function(socker_listener){
 			console.log('User sent request');
+			socket_listener.emit('refresh','2H','21:00');
+			console.log('Response sent');
 		});
 	});
 	server.listen(8080, '0.0.0.0');
