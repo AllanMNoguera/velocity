@@ -8,4 +8,10 @@ function index(response) {
 	util.pump(rs, response);
 }
 
+function connect(response) {
+	var rs = fs.createReadStream('html/js/connect.js');
+	util.pump(rs, response);
+}
+
 exports.index = index;
+exports.connect = connect;

@@ -5,9 +5,10 @@
 	"author":"Allan Noguera",
 	"contributors":[],
 	"dependencies": {
-		"node-mysql":"0.4"	
+		"node-mysql":"0.4.2",
+		"socket.io":"1.3.5"	
 	},
 	"lib":".",
 	"main":"./index.js",
-	"version":"0.1.0"
+	"version":"0.1.1"
 }
