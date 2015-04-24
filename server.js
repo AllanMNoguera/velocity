@@ -23,15 +23,23 @@ function iniciar(route, handle) {
 			console.log('Adding bus...');
 			model.addbus(socket_listener, plate, type);
 		});
+		socket_listener.on('modbus', function(id, plate, type){
+			console.log('Modifying bus...');
+			model.modbus(socket_listener, id, plate, type);
+		});
+		socket_listener.on('delbus', function(id, plate, type){
+			console.log('Deleting bus...');
+			model.delbus(socket_listener, id);
+		});
 		socket_listener.on('requestschedule', function(){
 			console.log('Requesting schedule...');
 			model.schedule(socket_listener);
 		});
-		socket_listener.on('requestaddbus', function(){
+		socket_listener.on('requestmanagebus', function(){
 			console.log('Requesting bus info...');
-			model.bustype(socket_listener);
+			model.busmanage(socket_listener);
 		});
-		socket_listener.on('requestaddroute', function(){
+		socket_listener.on('requestmanageroute', function(){
 			console.log('Requesting route info...');
 		});
 	});

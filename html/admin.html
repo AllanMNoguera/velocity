@@ -16,17 +16,21 @@
 
 		<div id="nav">
 			<a id='home'>Home</a><br>
-			<a id='addbus'>Add Bus</a><br>
-			<a id='addroute'>Add Route</a><br>
+			<a id='managebus'>Manage Bus</a><br>
+			<a id='manageroute'>Manage Route</a><br>
 		</div>
 
 		<div id="section">
-			<div id='bus' class="box"><h1>Add a bus</h1>
+			<div id='bus' class="box"><h1>Manage bus</h1>
 				<table>
+					<tr>
+						<td>Create</td>
+						<td></td>
+					</tr>
 					<tr>
 						<td>Type</td>
 						<td>
-							<select id='bustype' name='bustype'>
+							<select id='bustypecre' name='bustypecre'>
 							</select>
 						</td>
 					</tr>
@@ -34,7 +38,7 @@
 						<td>Plate</td>
 						<td>
 							<div style="resize: horizontal; width: 15em; overflow: auto; border: solid gray 1px">
-							<input id='busplate' style="width: 96%; border: none; resize: none">
+							<input id='busplatecre' style="width: 96%; border: none; resize: none">
 				     			</div>
 						</td>
 					</tr>
@@ -44,9 +48,50 @@
 							<input id='createbus' type='button' value='Create'/>
 						</td>
 					</tr>
+					<tr>
+						<td>Modify</td>
+						<td>
+							<select id='buses' name='buses'>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Type</td>
+						<td>
+							<select id='bustypemod' name='bustypemod'>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Plate</td>
+						<td>
+							<div style="resize: horizontal; width: 15em; overflow: auto; border: solid gray 1px">
+							<input id='busplatemod' style="width: 96%; border: none; resize: none">
+				     			</div>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input id='modifybus' type='button' value='Modify'/>
+						</td>
+					</tr>
+					<tr>
+						<td>Delete</td>
+						<td>
+							<select id='busesdel' name='busesdel'>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input id='deletebus' type='button' value='Delete'/>
+						</td>
+					</tr>
 				</table>
 			</div>
-			<div id='route' class="box"><h1>Add a route</h1></div>
+			<div id='route' class="box"><h1>Manage route</h1></div>
 		</div>
 
 		<div id="footer">
