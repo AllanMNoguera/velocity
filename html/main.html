@@ -6,16 +6,43 @@
 	<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="html/js/connect.js"></script>
 	<title>Bus Control</title>
+	<link rel="stylesheet" href="html/css/main.css">
 </head>
 </head>
 	<body>
-		<p>Under Construction.</p>
-		<a id='button'>Send Message</a>
-		<table id='itinerario' border='1'>
-			<tr>
-				<th>Ruta</td>
-				<th>Hora</td>
-			</tr>
-		</table>
+		<div id="header">
+			<h1>Velocity Bus Company</h1>
+		</div>
+
+		<div id="nav">
+			<a id='refresh'>Refresh</a><br>
+			Buy<br>
+			<a id='admin'>Admin</a><br>
+			<div id="login_tool">
+				User:<div style="resize: horizontal; width: 15em; overflow: auto; border: solid gray 1px">
+					<input id='user' style="width: 96%; border: none; resize: none">
+				     </div>
+				Password:<div style="resize: horizontal; width: 15em; overflow: auto; border: solid gray 1px">
+					<input id='pass'  type='password' style="width: 96%; border: none; resize: none">
+				     </div>
+				<input id='login' type='button' value='Login'/>
+			</div>
+		</div>
+
+		<div id="section">
+			<h1>Schedule</h1>
+			<p>
+				<table id='itinerario' border='1'>
+					<tr>
+						<th>Ruta</td>
+						<th>Hora</td>
+					</tr>
+				</table>
+			</p>
+		</div>
+
+		<div id="footer">
+			Copyright© velocity.com
+		</div>	
 	</body>
 </html>
