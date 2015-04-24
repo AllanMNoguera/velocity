@@ -19,10 +19,12 @@ function iniciar(route, handle) {
 	var server = http.createServer(onRequest);
 	var socket = io(server);
 	socket.on('connection', function(socket_listener){
-		console.log('User has connected');
-		socket_listener.on('request', function(){
-			console.log('User sent request');
+		socket_listener.on('requestschedule', function(){
+			console.log('Requesting schedule...');
 			model.schedule(socket_listener);
+		});
+		socket_listener.on('requestaddroute', function(){
+			console.log('Requesting route info...');
 		});
 	});
 	server.listen(8080, '0.0.0.0');

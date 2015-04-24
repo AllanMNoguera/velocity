@@ -11,9 +11,10 @@ socket.on('refresh', function(rows) {
 });
 
 var main = function () {
-	$('#login_tool').toggle();
+	$('#login_tool').toggle();	
+	socket.emit('requestschedule');
 	$('#refresh').click(function() {
-		socket.emit('request');
+		socket.emit('requestschedule');
 	});
 	$('#admin').click(function() {
 		$('#login_tool').toggle();

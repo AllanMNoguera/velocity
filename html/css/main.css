@@ -19,9 +19,18 @@
     padding:5px;
 }
 #section {
-    width:350px;
+    width:1000px;
     float:left;
     padding:10px;
+}
+.box {
+    background-color:gray;
+    height: 400px;
+    width:420px;
+    margin: 5px;
+    float:left;
+    padding:30px;
+    color:white;
 }
 #footer {
     background-color:black;
