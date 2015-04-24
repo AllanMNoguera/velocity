@@ -17,6 +17,7 @@ socket.on('refreshbus', function(types, buses) {
 		newbus = newbus.replace('{:dato:}', buses[bus].PLACA);
 		$('#buses').append(newbus);
 		$('#busesdel').append(newbus);
+		$('#busesroute').append(newbus);
 	}	
 });
 
@@ -87,8 +88,31 @@ var main = function () {
 		socket.emit('delbus', id);
 	});
 	$('#manageroute').click(function() {
-		$('#route').toggle();	
-		socket.emit('requestmanageroute');
+		$('#route').toggle();
+		$('#startroute').removeAttr('disabled');
+		$('#endroute').prop('disabled','true');
+		socket.emit('requestmanagebus');
+	});
+	$('#startroute').click(function() {
+		var route = $('#routecod').val();
+		var hour = $('#routehour').val();
+		var bus = $('#busesroute').val();
+		$('#routecod').removeAttr('disabled');
+		$('#routehour').removeAttr('disabled');
+		$('#busesroute').removeAttr('disabled');
+		if(route === '' && hour === '') {
+			$('#routecod').val('');
+			$('#routehour').val('');
+			window.alert('You must input route code and route hour to proceed');
+		} else {
+			$('#endroute').removeAttr('disabled');
+			$('#startroute').prop('disabled','true');
+			
+			$('#routecod').prop('disabled','true');
+			$('#routehour').prop('disabled','true');
+			$('#busesroute').prop('disabled','true');
+			socket.emit('requestmanagebus');
+		}
 	});
 };
 
