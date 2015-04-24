@@ -19,9 +19,17 @@ function iniciar(route, handle) {
 	var server = http.createServer(onRequest);
 	var socket = io(server);
 	socket.on('connection', function(socket_listener){
+		socket_listener.on('addbus', function(plate, type){
+			console.log('Adding bus...');
+			model.addbus(socket_listener, plate, type);
+		});
 		socket_listener.on('requestschedule', function(){
 			console.log('Requesting schedule...');
 			model.schedule(socket_listener);
+		});
+		socket_listener.on('requestaddbus', function(){
+			console.log('Requesting bus info...');
+			model.bustype(socket_listener);
 		});
 		socket_listener.on('requestaddroute', function(){
 			console.log('Requesting route info...');
