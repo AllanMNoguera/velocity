@@ -45,6 +45,11 @@ socket.on('paycorrect', function(routes, idticket, idconfi) {
 	window.alert("Payment Successful\nYour ticket is : " + idticket);
 });
 
+socket.on('busfull', function(routes) {
+	$('#expanded').empty();
+	$('#amount').val('');
+	window.alert('Bus is full');
+});
 
 socket.on('payincorrect', function(routes) {
 	$('#expanded').empty();

@@ -165,8 +165,18 @@ var routemanage = function (socket, route, hour, busid) {
 	});
 }
 
+var querycapacidad = 'SELECT RUTA, HORA_PARTIDA, COUNT(R.BUS) AS TOTAL, CAPACIDAD FROM RUTA_TIQUETE AS R JOIN BUS AS B ON B.BUS = R.BUS JOIN TIPO_BUS AS T ON T.TIPO_BUS=B.TIPO_BUS WHERE RUTA = ? AND HORA_PARTIDA = ? AND R.BUS = ? GROUP BY RUTA,HORA_PARTIDA;';
+
 var pay = function(socket, checklist, total) {
 	box.connect(function(conn) {
+		var where = checklist[0].split('/');
+		console.log(checklist[0]);
+		conn.query(querycapacidad ,[where[0],where[3],where[4]], function(err,capacity,fields) {
+		console.log(where[4]);
+		if(capacity.length > 0){
+		console.log(capacity);
+		console.log(capacity[0].TOTAL + '<' + capacity[0].CAPACIDAD);
+		if(parseInt(capacity[0].TOTAL) < parseInt(capacity[0].CAPACIDAD)) {
 		conn.query('SELECT TIQUETE FROM TIQUETE ORDER BY TIQUETE DESC LIMIT 1;',function(err, rows, fields) {
 			var idt = 1;
 			var idc = 1;
@@ -202,6 +212,12 @@ var pay = function(socket, checklist, total) {
 					}
 				});
 			});
+		});
+		} else {
+			console.log('Payment rejected, bus full' + err);
+			socket.emit('busfull');
+		}
+		}
 		});
 	});
 }
