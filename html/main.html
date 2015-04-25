@@ -30,15 +30,33 @@
 		</div>
 
 		<div id="section">
-			<h1>Schedule</h1>
-			<p>
-				<table id='itinerario' border='1'>
+			<div id='schedule' class="box"><h1>Schedule</h1>
+				<p>
+					<select id='route' name='route'>
+					</select>
+				
+					<input id='expand' type='button' value='Expand'/>
+				</p>
+				<table id='expanded'>
+				</table>
+				<input id='generate' type='button' value='Ticket'/>
+				<table id='payment'>
 					<tr>
-						<th>Ruta</td>
-						<th>Hora</td>
+						<th>Payment</th>
+					</tr>
+					<tr>
+						<td>Amount:</td>
+						<td>Q.<input type='text' id='amount'/></td>
+					</tr>
+					<tr>
+						<td><input id='pay' type='button' value='Pay'/></td>
 					</tr>
 				</table>
-			</p>
+			</div>
+			<div class="box"><h1>Ticket</h1>
+				<p>
+				</p>
+			</div>
 		</div>
 
 		<div id="footer">

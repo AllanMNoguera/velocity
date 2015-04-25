@@ -111,14 +111,59 @@
 					<tr>
 						<td>Hour:<td>
 						<td>
-							<div style="resize: horizontal; width: 15em; overflow: auto; border: solid gray 1px">
-							<input id='routehour' style="width: 96%; border: none; resize: none">
-				     			</div>
+							<select id='routehour' name='routehour'>
+							</select>
 						</td>
 					</tr>
 					<tr>
 						<td><input id='startroute' type='button' value='Start'/><td>
 						<td><input id='endroute' type='button' value='Finish'/></td>
+					</tr>
+				</table>
+				<div id="add_tool">
+					<table>
+						<tr>
+							<td>Place:</td>
+							<td><select id='city' name='city'>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Type:</td>
+							<td><select id='citytype' name='citytype'>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Hour:</td>
+							<td><select id='cityhour' name='cityhour'>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Added value Q:</td>
+							<td><div style="resize: horizontal; width: 15em; overflow: auto; border: solid gray 1px">
+							<input id='routeval' type='float' min='0' max='10000' style="width: 96%; border: none; resize: none">
+				     			</div></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input id='addtoroute' type='button' value='Add'/>
+							<input id='cancelroute' type='button' value='Cancel'/></td>
+						</tr>
+					</table>
+				</div>
+				<table>
+					<tr>
+						<th>Delete route<th>
+					</tr>
+					<tr>
+						<td>Route:<td>
+						<td>
+							<select id='routedel' name='routedel'>
+							</select>
+						</td>
+						<td><input id='delroute' type='button' value='Delete'/></td>
 					</tr>
 				</table>
 			</div>
