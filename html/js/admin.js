@@ -176,13 +176,16 @@ var main = function () {
 			var route = $('#routecod').val();
 			var busid = $('#busesroute').val();
 			var hour = $('#routehour').val();
+			var trtd = '<tr><td>{:cod:}</td><td>{:bus:}</td><td>{:hour:}</td></tr>';
 
+			$('#historydis').append(trtd.replace('{:cod:}',route).replace('{:bus:}',busid).replace('{:hour:}',hour));
+			console.log(trtd.replace('{:cod:}',route).replace('{:bus:}',busid).replace('{:hour:}',hour));
 			BUSID = busid;
 			
 			$('#routecod').prop('disabled','true');
 			$('#routehour').prop('disabled','true');
 			$('#busesroute').prop('disabled','true');
-			socket.emit('requestmanageroute', route, hour, busid);
+			//socket.emit('requestmanageroute', route, hour, busid);
 		}
 	});
 	$('#addtoroute').click(function() {
