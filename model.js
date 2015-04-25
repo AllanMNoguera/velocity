@@ -17,6 +17,15 @@ var schedule = function (socket) {
 	});
 }
 
+var showticket = function (socket, ticket) {
+	box.connect(function(conn) {
+		conn.query('SELECT * FROM RUTA_TIQUETE R JOIN LUGAR L ON R.LUGAR = L.LUGAR WHERE TIQUETE = ?;', [ticket],function(err, places, fields) {
+			console.log('Sending places...');
+			socket.emit('refreshticket', places.length, places);
+		});
+	});
+}
+
 var addbus = function (socket, plate, type) {
 	box.connect(function(conn) {
 		conn.query('SELECT BUS FROM BUS ORDER BY BUS DESC LIMIT 1;',function(err, rows, fields) {
@@ -160,11 +169,11 @@ var pay = function(socket, checklist, total) {
 	box.connect(function(conn) {
 		conn.query('SELECT TIQUETE FROM TIQUETE ORDER BY TIQUETE DESC LIMIT 1;',function(err, rows, fields) {
 			var idt = 1;
+			var idc = 1;
 			if(rows.length > 0) {
 				idt = parseInt(rows[0].TIQUETE) + 1;
 			}
 			conn.query('SELECT CONFIRMACION FROM PAGO ORDER BY CONFIRMACION DESC LIMIT 1;',function(err, rows, fields) {
-				var idc = 1;
 				if(rows.length > 0) {
 					idc = parseInt(rows[0].CONFIRMACION) + 1;
 				}
@@ -181,7 +190,7 @@ var pay = function(socket, checklist, total) {
 										console.log('Payment successful...');
 									});
 								}
-								socket.emit('paycorrect');
+								socket.emit('paycorrect',idt,idc);
 							} else {
 								console.log('Payment rejected... ' + err);
 								socket.emit('payincorrect');
@@ -203,6 +212,7 @@ exports.expandroute = expandroute;
 exports.routemanage = routemanage;
 exports.addtoroute = addtoroute;
 exports.delroute = delroute;
+exports.showticket = showticket;
 exports.addbus = addbus;
 exports.modbus = modbus;
 exports.delbus = delbus;

@@ -35,6 +35,10 @@ function iniciar(route, handle) {
 			console.log('Paying ticket...');
 			model.pay(socket_listener, checklist, total);
 		});
+		socket_listener.on('showticket', function(ticket){
+			console.log('Paying ticket...');
+			model.showticket(socket_listener, ticket);
+		});
 		socket_listener.on('addtoroute', function(point){
 			console.log('Adding route info...');
 			model.addtoroute(socket_listener, point);
