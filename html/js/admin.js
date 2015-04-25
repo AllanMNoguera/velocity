@@ -185,7 +185,7 @@ var main = function () {
 			$('#routecod').prop('disabled','true');
 			$('#routehour').prop('disabled','true');
 			$('#busesroute').prop('disabled','true');
-			//socket.emit('requestmanageroute', route, hour, busid);
+			socket.emit('requestmanageroute', route, hour, busid);
 		}
 	});
 	$('#addtoroute').click(function() {
