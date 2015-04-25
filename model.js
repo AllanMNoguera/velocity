@@ -170,11 +170,8 @@ var querycapacidad = 'SELECT RUTA, HORA_PARTIDA, COUNT(R.BUS) AS TOTAL, CAPACIDA
 var pay = function(socket, checklist, total) {
 	box.connect(function(conn) {
 		var where = checklist[0].split('/');
-		console.log(checklist[0]);
 		conn.query(querycapacidad ,[where[0],where[3],where[4]], function(err,capacity,fields) {
-		console.log(where[4]);
 		if(capacity.length > 0){
-		console.log(capacity);
 		console.log(capacity[0].TOTAL + '<' + capacity[0].CAPACIDAD);
 		if(parseInt(capacity[0].TOTAL) < parseInt(capacity[0].CAPACIDAD)) {
 		conn.query('SELECT TIQUETE FROM TIQUETE ORDER BY TIQUETE DESC LIMIT 1;',function(err, rows, fields) {
